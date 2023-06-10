@@ -1,0 +1,113 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#BFD1DD"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+            android:id="@+id/rectangle"
+            android:orientation="vertical"
+            android:gravity="start"
+            android:background="@drawable/rectangle_dashboard"
+            android:layout_width="match_parent"
+            android:layout_height="297dp"
+            android:elevation="20dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:paddingRight="20dp">
+
+        <LinearLayout
+                android:layout_marginBottom="20dp"
+                android:gravity="end"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/menu"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="50dp"
+                android:gravity="start"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Selamat Datang di Aplikasi Tanah Longsor"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/dmsans1"/>
+
+            </LinearLayout>
+
+    </LinearLayout>
+
+    <GridLayout
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="250dp"
+        android:alignmentMode="alignMargins"
+        android:columnOrderPreserved="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:rowCount="3"
+        android:columnCount="2"
+        android:translationZ="20dp">
+
+        <ImageView
+            android:elevation="2dp"
+            android:id="@+id/icon1"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_gravity="center"
+            android:background="@drawable/image_bg"
+            android:padding="40dp"
+            android:src="@drawable/maps" />
+
+        <ImageView
+            android:elevation="2dp"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/icon2"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_gravity="center"
+            android:background="@drawable/image_bg"
+            android:padding="40dp"
+            android:src="@drawable/history">
+        </ImageView>
+
+
+
+        <TextView
+            android:layout_marginTop="15dp"
+            android:textAlignment="center"
+            android:textColor="#27374D"
+            android:fontFamily="@font/dmsansbold"
+            android:textSize="13sp"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:text="Peta Riwayat Kejadian Tanah Longsor"/>
+        <TextView
+            android:layout_marginTop="15dp"
+            android:textAlignment="center"
+            android:textColor="#27374D"
+            android:fontFamily="@font/dmsansbold"
+            android:layout_marginLeft="20dp"
+            android:width="160dp"
+            android:textSize="13sp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Peta Riwayat Kejadian Tanah Longsor"/>
+
+    </GridLayout>
+
+
+    <!-- Other CardView menu items -->
+
+</RelativeLayout>
