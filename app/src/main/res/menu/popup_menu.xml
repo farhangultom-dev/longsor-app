@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group>
+        <item
+            android:id="@+id/menu_setting"
+            android:icon="@drawable/history"
+            android:title="Pengaturan" />
+        <item
+            android:id="@+id/menu_bantuan"
+            android:icon="@drawable/icon"
+            android:title="Bantuan" />
+        <item
+            android:id="@+id/menu_tentang"
+            android:icon="@drawable/maps"
+            android:title="Tentang" />
 
-    <item
-        android:id="@+id/menu1"
-        android:icon="@drawable/history"
-        android:title="Pengaturan" />
-    <item
-        android:id="@+id/menu2"
-        android:icon="@drawable/maps"
-        android:title="Tentang" />
-    <item
-        android:id="@+id/menu3"
-        android:icon="@drawable/icon"
-        android:title="Bantuan" />
+    </group>
+
 </menu>
