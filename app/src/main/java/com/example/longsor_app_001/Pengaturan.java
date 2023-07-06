@@ -10,10 +10,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Switch;
 
+import com.google.android.gms.maps.LocationSource;
+
 public class Pengaturan extends AppCompatActivity {
 
     private ImageView buttonback;
-    private Button switch_notifikasi;
+    private Button button_notifikasi;
+    private Button button_lokasi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +32,22 @@ public class Pengaturan extends AppCompatActivity {
                 finish();
             }
         });
-        this.switch_notifikasi = (Button) findViewById(R.id.notificationSwitch);
-        switch_notifikasi.setOnClickListener(new View.OnClickListener() {
+
+        this.button_notifikasi = (Button) findViewById(R.id.notificationSwitch);
+        button_notifikasi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
                 intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
+                startActivity(intent);
+            }
+        });
+
+        this.button_lokasi = (Button) findViewById(R.id.locationswitch);
+        button_lokasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                 startActivity(intent);
             }
         });

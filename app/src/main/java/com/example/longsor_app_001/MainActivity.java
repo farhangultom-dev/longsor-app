@@ -3,7 +3,9 @@ package com.example.longsor_app_001;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.MenuPopupHelper;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
@@ -19,6 +21,7 @@ import java.lang.reflect.Field;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 100;
     private ImageView buttonmenu;
     private ImageView map1view;
     private ImageView map2view;
@@ -28,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        requestLocationPermission();
+
 
         this.map1view = (ImageView) findViewById(R.id.icon_petakerawanan);
         this.map2view = (ImageView) findViewById(R.id.icon_petariwayat);
@@ -83,4 +89,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void requestLocationPermission() {
+        // Request the ACCESS_FINE_LOCATION permission
+        ActivityCompat.requestPermissions(
+                this,
+                new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE
+        );
+    }
+
 }

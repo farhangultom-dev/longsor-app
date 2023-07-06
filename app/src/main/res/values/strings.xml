@@ -3,4 +3,20 @@
     <string name="text">
         Aplikasi ini dibuat dengan tujuan untuk mendeteksi bencana tanah longsor yang ada di kab. Bantul dengan memanfaatkan teknologi Smartphone. dan akan terus dikembangan ke versi selanjutnya.
     </string>
+
+    <string name="keterangan_1">
+        Cara menggunakan apps ini hanya anda membuka Lalu mengoperasikan kebutuhan yang anda inginkan atau anda perlukan. dengan menu Maps lokasi bencana Rawan Tanah Longsor di Kab. Bantul.
+    </string>
+
+    <string name="keterangan_2">
+        Cara mengaktifkan notifikasi cukup mudah, kamu hanya perlu pergi ke Pengaturan > Klik tombol "Buka" pada "Izinkan notifikasi".
+    </string>
+
+    <string name="keterangan_3">
+        Cara melihat lokasi, pergi ke dashboard utama. Disana ada 2 Menu untuk melihat Lokasi rawan longsor dan Riwayat lokasi yang pernah kamu kunjungi.
+    </string>
+
+    <string name="keterangan_4">
+        Aplikasi ini akan menyimpan otomatis Riwayat koordinat titik Lokasi terakhir kamu, ketika memasuki daerah rawan longsor.
+    </string>
 </resources>
