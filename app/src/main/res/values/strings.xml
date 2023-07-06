@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">longsor-app_001</string>
+    <string name="text">
+        Aplikasi ini dibuat dengan tujuan untuk mendeteksi bencana tanah longsor yang ada di kab. Bantul dengan memanfaatkan teknologi Smartphone. dan akan terus dikembangan ke versi selanjutnya.
+    </string>
 </resources>
