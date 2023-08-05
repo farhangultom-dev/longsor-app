@@ -1,30 +1,36 @@
 package com.example.longsor_app_001;
 
-import androidx.appcompat.app.AlertDialog;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.menu.MenuPopupHelper;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
-import java.lang.reflect.Field;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final int LOCATION_PERMISSION_REQUEST_CODE = 100;
+    private ProgressDialog progressDialog;
     private ImageView buttonmenu;
     private ImageView map1view;
     private ImageView map2view;
+
+    private Double currentUserLatitude;
+    private Double currentUserLongitude;
 
 
     @Override
@@ -32,8 +38,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        requestLocationPermission();
-
+        getLocation();
 
         this.map1view = (ImageView) findViewById(R.id.icon_petakerawanan);
         this.map2view = (ImageView) findViewById(R.id.icon_petariwayat);
@@ -41,7 +46,11 @@ public class MainActivity extends AppCompatActivity {
         this.map1view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showProgressDialog();
+
                 Intent intent = new Intent(MainActivity.this, map1_view.class);
+                intent.putExtra("CURRENT_USER_LATITUDE", currentUserLatitude);
+                intent.putExtra("CURRENT_USER_LONGITUDE", currentUserLongitude);
                 startActivity(intent);
                 finish();
             }
@@ -50,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
         this.map2view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showProgressDialog();
+
                 Intent intent = new Intent(MainActivity.this, map2_view.class);
                 startActivity(intent);
                 finish();
@@ -90,12 +101,54 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void requestLocationPermission() {
-        // Request the ACCESS_FINE_LOCATION permission
-        ActivityCompat.requestPermissions(
-                this,
-                new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE
-        );
+    private void getLocation() {
+        // Check if the location provider is enabled
+        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        if (locationManager != null && !locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            // Location provider is not enabled, show an alert or take appropriate action
+            Toast.makeText(this, "Please enable GPS to get location updates.", Toast.LENGTH_SHORT).show();
+        } else {
+            // Start receiving location updates
+            FusedLocationProviderClient fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                return;
+            }
+
+            fusedLocationClient.getLastLocation()
+                    .addOnSuccessListener(location -> {
+                        if (location != null) {
+                            // Latitude and longitude of the user's current location
+                            currentUserLatitude = location.getLatitude();
+                            currentUserLongitude = location.getLongitude();
+                        } else {
+                            // Location is null, handle the case if location is not available
+                            Toast.makeText(this, "Location not available.", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnFailureListener(e -> {
+                        // Handle location retrieval failure
+                        Toast.makeText(this, "Failed to get location: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    });
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        dismissProgressDialog();
+    }
+
+    private void showProgressDialog() {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+    }
+
+    private void dismissProgressDialog() {
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
     }
 
 }

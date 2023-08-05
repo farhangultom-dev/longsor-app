@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mapView2"
-    android:name="com.google.android.gms.maps.SupportMapFragment"
-    android:layout_width="match_parent"
+    tools:context=".map2_view"
     android:layout_height="match_parent"
-    map:cameraTilt="30"
-    map:uiRotateGestures="true"
-    map:uiZoomControls="true"
-    tools:context=".map2_view">
+    android:layout_width="match_parent">
+
+    <fragment
+        android:id="@+id/mapView2"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        map:cameraTilt="30"
+        map:layout_constraintBottom_toBottomOf="parent"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toTopOf="parent"
+        map:uiRotateGestures="true"
+        map:uiZoomControls="true" />
 
     <LinearLayout
         android:id="@+id/rectangle2"
@@ -18,7 +26,10 @@
         android:background="@drawable/rectangle_dashboard"
         android:elevation="10dp"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/back2"
@@ -42,17 +53,16 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@drawable/rectangle_dashboard"
-        android:gravity="bottom"
-        android:orientation="vertical"
-        android:padding="20dp">
-
-    </LinearLayout>
-
-
-</fragment>
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@color/black"
+        android:textAlignment="center"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintTop_toBottomOf="@+id/rectangle2" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 

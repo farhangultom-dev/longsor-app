@@ -19,4 +19,6 @@
     <string name="keterangan_4">
         Aplikasi ini akan menyimpan otomatis Riwayat koordinat titik Lokasi terakhir kamu, ketika memasuki daerah rawan longsor.
     </string>
+
+    <string name="google_maps_api_key" translatable="false">AIzaSyBRsIh-DKSYmes9z_MKkDWdNjYDgYYwWuc</string>
 </resources>
