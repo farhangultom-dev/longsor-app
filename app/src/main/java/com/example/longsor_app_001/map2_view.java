@@ -64,6 +64,9 @@ public class map2_view extends AppCompatActivity implements OnMapReadyCallback {
         riwayatLongsorByTahuns.add(new DataRiwyatLongsorModelItem(R.raw.riwayat_longsor_2018,"2018"));
         riwayatLongsorByTahuns.add(new DataRiwyatLongsorModelItem(R.raw.riwayat_longsor_2019,"2019"));
         riwayatLongsorByTahuns.add(new DataRiwyatLongsorModelItem(R.raw.riwayat_longsor_2020,"2020"));
+        riwayatLongsorByTahuns.add(new DataRiwyatLongsorModelItem(R.raw.riwayat_longsor_2021,"2021"));
+        riwayatLongsorByTahuns.add(new DataRiwyatLongsorModelItem(R.raw.riwayat_longsor_2023,"2023"));
+
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.mapView2);
@@ -75,6 +78,9 @@ public class map2_view extends AppCompatActivity implements OnMapReadyCallback {
         spinnerDataList.add("2018");
         spinnerDataList.add("2019");
         spinnerDataList.add("2020");
+        spinnerDataList.add("2021");
+        spinnerDataList.add("2023");
+
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this,
